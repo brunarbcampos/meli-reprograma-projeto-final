@@ -3,7 +3,7 @@ const controller = require("../controllers/destinoController")
 
 //rotas
 router.get("/", controller.getDestinos)
-// router.get("/random", controller.getRandom)
+router.get("/random", controller.getRandom)
 router.get("/:clima", controller.getClima)
 router.post("/", controller.postDestino)
 router.put("/:cidade", controller.putDestino)

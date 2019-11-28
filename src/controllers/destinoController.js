@@ -9,6 +9,18 @@ exports.getDestinos = (req, res) => {
 }
   
 //getRandom
+exports.getRandom = (req, res) => {
+    model.count().exec(function (err, count) {
+
+        // Get a random entry
+        var random = Math.floor(Math.random() * count)
+        model.findOne().skip(random).exec(
+        function (err, result) {
+        return res.status(200).send(result)
+          })
+      })
+ }
+
 //getClima
 exports.getClima = (req, res) => {
     model.find({"clima": req.params.clima} ,function (err, destinosClima) {
