@@ -1,10 +1,24 @@
 const model = require("../model/destinoModel")
 
-
 //getDestinos
+exports.getDestinos = (req, res) => {
+    model.find(function (err, destinos) {
+    if (err) res.status(500).send(err);
+    res.status(200).send(destinos);
+    });
+}
+  
 //getRandom
 //getClima
-
+exports.getClima = (req, res) => {
+    model.find({"clima": req.params.clima} ,function (err, destinosClima) {
+    if (err) res.status(500).send(err);
+    res.status(200).send(destinosClima);
+    });
+}
+  
+  
+//post
 exports.postDestino = (req, res) => {
     let destino = new model (req.body);
     
@@ -15,4 +29,26 @@ exports.postDestino = (req, res) => {
 }
 
 //putDestino
+exports.putDestino = (req, res) => {
+    model.update(
+        { "cidade": req.params.cidade },
+        { $set: req.body },
+        { upsert: true },
+        function (err) {
+            if (err) return res.status(500).send(err);
+            res.status(200).send({ mensagem: "Atualizado com sucesso!" });
+        })
+}
+
 //deleteDestino
+exports.deleteDestino = (req,res) => {
+    model.findOne({"cidade": req.params.cidade}, function (err, destinoDelete) {
+     
+    if (!destinoDelete) {
+        return res.status(200).send({ message: "Infelizmente esse destino não foi encontrado!!!"});
+    }
+    destinoDelete.remove(function(err) {
+        if(!err) res.status(200).send({ message: "Destino removido com sucesso!"});
+    })
+    });
+}
