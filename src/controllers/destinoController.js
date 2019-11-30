@@ -28,7 +28,14 @@ exports.getClima = (req, res) => {
     res.status(200).send(destinosClima);
     });
 }
-  
+
+//getEstado
+exports.getEstado = (req, res) => {
+    model.find({"estado": req.params.estado} ,function (err, destinosEstado) {
+    if (err) res.status(500).send(err);
+    res.status(200).send(destinosEstado);
+    });
+}
   
 //post
 exports.postDestino = (req, res) => {
