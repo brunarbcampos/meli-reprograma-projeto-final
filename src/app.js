@@ -5,8 +5,7 @@ const cors = require("cors");
 
 const app = express()
 
-mongoose.connect("mongodb://localhost:27017/Bruna",
-{userNewUrlParser: true});
+mongoose.connect("mongodb+srv://bronx:bru771@cluster0-2q895.mongodb.net/test?retryWrites=true&w=majority",{userNewUrlParser: true});
 
 let db = mongoose.connection;
 db.on("error", console.log.bind(console, "connection error:"))
