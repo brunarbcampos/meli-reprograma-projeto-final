@@ -2,6 +2,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const path = require("path")
 
 const app = express()
 
@@ -20,5 +21,10 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use("/destinos", destinos)
+
+app.use(express.static('doc'))
+app.get('/api-doc', (req, res) => {
+  res.sendFile(path.join(__dirname + '/../doc/index.html'));
+})
 
 module.exports = app

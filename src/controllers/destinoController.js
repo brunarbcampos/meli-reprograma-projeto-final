@@ -41,9 +41,16 @@ exports.getEstado = (req, res) => {
 exports.postDestino = (req, res) => {
     let destino = new model (req.body);
     
-    destino.save(function (err) {
-    if (err) res.status(500).send(err);
-    res.status(201).send({ mensagem: "Destino inserido com sucesso!", destino});
+    model.findOne({ cidade: destino.cidade}, function(err, destinoDuplicado){
+        if (err) res.status(500).send(err);
+        if (destinoDuplicado) {
+            res.status(500).send({mensagem: "Destino ja encontrado"})
+        } else {
+            destino.save(function (err) {
+                if (err) res.status(500).send(err);
+            res.status(201).send({ mensagem: "Destino inserido com sucesso!", destino});
+            })
+        }
     })
 }
 
@@ -64,7 +71,7 @@ exports.deleteDestino = (req,res) => {
     model.findOne({"cidade": req.params.cidade}, function (err, destinoDelete) {
      
     if (!destinoDelete) {
-        return res.status(200).send({ message: "Infelizmente esse destino não foi encontrado!!!"});
+        return res.status(200).send({ message: "Infelizmente esse destino não foi encontrado!"});
     }
     destinoDelete.remove(function(err) {
         if(!err) res.status(200).send({ message: "Destino removido com sucesso!"});
