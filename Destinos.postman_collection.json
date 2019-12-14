@@ -1,0 +1,197 @@
+{
+	"info": {
+		"_postman_id": "e4d56def-a972-454d-a674-0ecc7da74b09",
+		"name": "Destinos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post: insere um novo destino",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"cidade\": \"Foz j\",\r\n        \"estado\": \"Paraná\",\r\n        \"clima\": \"subtropical\",\r\n        \"pontosTuristicos\": [\r\n            {\r\n                \"nome\": \"Cataratas do Iguaçu\"\r\n            },\r\n            {\r\n                \"nome\": \"Usina de Itaipú\"\r\n            },\r\n            {\r\n                \"nome\": \"Parque das Aves\"\r\n            }\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/destinos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"destinos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Clima: mostra destinos por clima",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/destinos/subtropical",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"destinos",
+						"subtropical"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Estado: traz todos os destinos do mesmo estado",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/destinos/estado/São Paulo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"destinos",
+						"estado",
+						"São Paulo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get: traz todos os destinos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/destinos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"destinos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get random: Destino aleatório",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/destinos/random",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"destinos",
+						"random"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put: Atualiza um destino",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"_id\": \"5df17cb63c9018001707ec7b\",\r\n        \"cidade\": \"Ilhabela\",\r\n        \"estado\": \"São Paulo\",\r\n        \"clima\": \"tropical\",\r\n        \"pontosTuristicos\": [\r\n            {\r\n                \"nome\": \"Praia Grande\"\r\n            },\r\n            {\r\n                \"nome\": \"Cachoeira do Gato\"\r\n            },\r\n            {\r\n                \"nome\": \"Parque Estadual de Ilhabela\"\r\n            }\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/destino/Ilhabela",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"destino",
+						"Ilhabela"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete: deleta um destino",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/destinos/Foz j",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"destinos",
+						"Foz j"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

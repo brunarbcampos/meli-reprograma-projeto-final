@@ -22,6 +22,7 @@ app.use(bodyParser.json());
 
 app.use("/destinos", destinos)
 
+//apidoc
 app.use(express.static('doc'))
 app.get('/api-doc', (req, res) => {
   res.sendFile(path.join(__dirname + '/../doc/index.html'));
